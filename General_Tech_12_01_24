@@ -1,0 +1,21 @@
+db.users.find(
+    { country: 'France' },
+    { fullname: 1, _id:0}
+)
+
+
+db.reactions.insertMany([
+    { _id: 1, reackt:2, title_track: 'Track 1', author:'Ivan'},
+    { _id: 2, reackt:1, title_track: 'Track 2', author:'Leva'},
+    { _id: 3, reackt:4 , title_track: 'Track 3', author:'Pety'  },
+    { _id: 4, reackt:2, title_track: 'Track 4', author:'Nemo' },
+    { _id: 5, reackt:0 ,title_track: 'Track 5', author:'Max' }
+])
+
+
+db.tracks.find({duration_sec:{$gte:60 , $lte:10*60}},
+                {title:1, _id:0})
+
+https://dbdiagram.io/d/65a3ef79ac844320aee12fcb
+
+

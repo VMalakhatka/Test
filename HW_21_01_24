@@ -1,0 +1,48 @@
+
+Вывести реакции с оценкой до 4 (вкл.)
+db.reactions.find({reackt:{$lte:4}})
+
+Вывести ко-во незаблокированных юзеров
+db.users.find({is_blocked:{$ne:true}})
+
+Добавить произвольный email юзеру 1
+db.users.updateOne({_id:1},
+    {
+        $set:{
+            email: "privegt@mail.com"
+        }
+    })
+
+Поменять страну юзера 2 на 'Brazil'
+
+db.users.updateOne({_id:2},
+    {
+        $set:{
+            country: "Brazil"
+        }
+    })
+
+в
+Заблокировать юзеров 1 и 5
+db.users.updateMany({_id:{$in:[1,5]}},
+    {
+        $set:{
+            is_blocked: true
+        }
+    })
+
+Разблокировать всех юзеров
+db.users.updateMany({},
+    {
+        $unset:{
+            is_blocked: null
+        }
+    }) 
+
+Вывести ко-во незаблокированных юзеров из Germany
+
+db.users.countDocuments(
+    {country: "Germany",
+       is_blocked: { $ne: true }
+    }
+)
